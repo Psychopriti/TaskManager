@@ -1,0 +1,21 @@
+{
+  "name": "inventory",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "node --watch --env-file =.env server.js",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.1",
+    "method-override": "^3.0.0",
+    "session-file-store": "^1.5.0"
+  }
+}

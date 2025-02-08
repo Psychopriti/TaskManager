@@ -1,0 +1,20 @@
+<!-- views/layouts/main.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+</head>
+<body>
+    {{#if loggedInUser}}
+    <nav>
+        <a href="/">Home</a>
+        <a href="/tasks/add">Add Task</a>
+        <a href="/logout">Logout</a>
+    </nav>
+    {{/if}}
+
+    {{{body}}} <!-- Render the body of the page -->
+</body>
+</html>

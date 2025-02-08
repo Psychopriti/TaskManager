@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Tasks</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome, {{loggedInUser}}!</h1>
+    </header>
+
+    <main class="main-content">
+        <h2>Your Tasks</h2>
+        <div class="task-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each tasks}}
+                    <tr>
+                        <td>{{this.title}}</td>
+                        <td>{{this.status}}</td>
+                        <td>{{this.description}}</td>
+                        <td class="task-actions">
+                            <form action="/tasks/delete/{{this.id}}" method="POST" style="display:inline;">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                            <form action="/tasks/edit/{{this.id}}" method="GET" style="display:inline;">
+                                <button type="submit" class="edit-btn">Edit</button>
+                            </form>
+                            {{#if (eq this.status "Pending")}}
+                            <form action="/tasks/complete/{{this.id}}" method="POST" style="display:inline;">
+                                <button type="submit" class="complete-btn">Complete</button>
+                            </form>
+                            <form action="/tasks/cancel/{{this.id}}" method="POST" style="display:inline;">
+                                <button type="submit" class="cancel-btn">Cancel</button>
+                            </form>
+                            {{/if}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+
+</body>
+</html>

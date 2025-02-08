@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+</head>
+<body>
+    <h1>Tasks</h1>
+    <p>Welcome, {{loggedInUser}}!</p>
+    <form action="/tasks" method="POST">
+        <input type="text" name="task" required>
+        <button type="submit">Add Task</button>
+    </form>
+    <ul>
+        {{#each tasks}}
+        <li>
+            {{this.task}}
+            <form action="/tasks/delete/{{this.id}}" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {{/each}}
+    </ul>
+    <a href="/logout">Logout</a>
+</body>
+</html>

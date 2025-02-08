@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Task</title>
+</head>
+<body>
+    <nav>
+        <a href="/tasks"> Go back</a>
+    </nav>
+    <h1>Edit Task</h1>
+    <form action="/tasks/edit/{{task.id}}" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="{{task.title}}" required>
+
+        <label for="description">Description:</label>
+        <textarea name="description" required>{{task.description}}</textarea>
+
+        <label for="due_date">Due Date:</label>
+        <input type="date" name="due_date" value="{{task.due_date}}" required>
+
+        <label for="priority">Priority:</label>
+        <select name="priority" required>
+            <option value="High" {{#if (eq task.priority 'High')}}selected{{/if}}>High</option>
+            <option value="Medium" {{#if (eq task.priority 'Medium')}}selected{{/if}}>Medium</option>
+            <option value="Low" {{#if (eq task.priority 'Low')}}selected{{/if}}>Low</option>
+        </select>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>
